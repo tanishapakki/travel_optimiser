@@ -17,4 +17,33 @@ class Trip(BaseModel):
     end_date = Column(String(100), nullable=False)
 
     user = relationship("User", back_populates="trips")
-    
+
+    itinerary_days = relationship(
+        "ItineraryDay",
+        back_populates="trip",
+        cascade="all, delete-orphan"
+    )
+
+    budget_categories = relationship(
+        "BudgetCategory",
+        back_populates="trip",
+        cascade="all, delete-orphan"
+    )
+
+    preferences = relationship(
+        "Preference",
+        back_populates="trip",
+        cascade="all, delete-orphan"
+    )
+
+    feedback = relationship(
+        "Feedback",
+        back_populates="trip",
+        cascade="all, delete-orphan"
+    )
+
+    chat_messages = relationship(
+        "ChatMessage",
+        back_populates="trip",
+        cascade="all, delete-orphan"
+    )

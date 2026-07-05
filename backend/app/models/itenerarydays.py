@@ -2,19 +2,23 @@
 
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
-from backend.app.base import BaseModel
+
+from backend.app.database import Base
 
 
-class Trip(BaseModel):
-    __tablename__ = "trips"
 
-    trip_id = Column(Integer, primary_key=True, index=True,  nullable=False)
-    user_id = Column(Integer, nullable=False)
-    destination = Column(String(255), nullable=False)
-    start_location = Column(String(100), nullable=False)
-    travelers = Column(Integer, nullable=False)
-    start_date = Column(String(100), nullable=False)
-    end_date = Column(String(100), nullable=False)
+class ItineraryDay(Base):
+    __tablename__ = "itinerary_days"
 
-    user = relationship("User", back_populates="trips")
-    
+    day_id = Column(Integer, primary_key=True, index=True,  nullable=False)
+    trip_id = Column(Integer, nullable=False)
+    day_number = Column(Integer, nullable=False)
+    date = Column(String(100), nullable=False)
+    notes = Column(String, nullable=True)
+    trip = relationship("Trip", back_populates="itinerary_days")
+
+    itinerary_items = relationship(
+        "ItineraryItem",
+        back_populates="itinerary_day",
+        cascade="all, delete-orphan"
+    )
