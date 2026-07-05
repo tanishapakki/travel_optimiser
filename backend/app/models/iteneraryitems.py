@@ -25,7 +25,7 @@ class ItineraryItem(Base):
     )
 
     budget_category = relationship(
-        "BudgetCategory",
+        "BudgetCategories",
         back_populates="itinerary_items"
     )
 
