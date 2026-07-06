@@ -17,7 +17,7 @@ alembic.ini
 venv/
 .venv/
 env/
-backend/venv/
+backend/.venv/
 
 # Python cache
 __pycache__/
