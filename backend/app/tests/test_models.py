@@ -1,9 +1,4 @@
-from app.database import engine
-from app.base import Base
+from app.core.db import engine
 
-# Import every model
-from app.models import *
-
-Base.metadata.create_all(bind=engine)
-
-print("Tables created successfully!")
+def test_engine_created():
+    assert engine is not None

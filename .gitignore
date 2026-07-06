@@ -16,7 +16,7 @@ alembic.ini
 # Virtual environments
 venv/
 .venv/
-env/
+
 backend/.venv/
 
 # Python cache
