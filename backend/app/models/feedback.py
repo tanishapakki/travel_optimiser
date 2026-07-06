@@ -1,9 +1,9 @@
 
 
 
-from sqlalchemy import Decimal, Column, Integer, String
+from sqlalchemy import  Column, Integer, String
 from sqlalchemy.orm import relationship
-from backend.app.base import BaseModel
+from app.base import BaseModel
 
 
 class Feedback(BaseModel):

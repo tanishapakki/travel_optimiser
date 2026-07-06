@@ -1,9 +1,9 @@
 
 
 
-from sqlalchemy import DateTime, Decimal, Column, Integer, String
+from sqlalchemy import DateTime, Column, Integer, String
 from sqlalchemy.orm import relationship
-from backend.app.base import BaseModel
+from app.base import BaseModel
 
 
 class ChatMessages(BaseModel):
@@ -14,7 +14,7 @@ class ChatMessages(BaseModel):
     user_id = Column(Integer, nullable=False)
     agent_name = Column(String(100))
     content = Column(String(200), nullable=False)
-    
+
     user = relationship("User", back_populates="chat_messages")
 
     trip = relationship("Trip", back_populates="chat_messages")
