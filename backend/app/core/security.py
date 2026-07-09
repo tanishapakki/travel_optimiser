@@ -1,0 +1,80 @@
+
+from passlib.context import CryptContext
+from app.core.config import settings
+
+from datetime import datetime, timedelta
+from jose import JWTError, jwt
+
+#Password hashing context
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+#JWT secret key and algorithm
+SECRET_KEY = settings.SECRET_KEY
+ALGORITHM = "HS256"
+
+def hash_password(password: str) -> str:
+    """
+    Hashes a plain password using bcrypt.
+
+    Args:
+        password (str): The plain password to hash.
+
+    Returns:
+        str: The hashed password.
+    """
+    return pwd_context.hash(password)
+
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    """
+    Verifies a plain password against a hashed password.
+
+    Args:
+        plain_password (str): The plain password to verify.
+        hashed_password (str): The hashed password to compare against.
+
+    Returns:
+        bool: True if the passwords match, False otherwise.
+    """
+    return pwd_context.verify(plain_password, hashed_password)
+
+def create_access_token(data: dict, expires_delta: timedelta  | None = None) -> str:
+    """
+    Creates a JWT access token.
+
+    Args:
+        data (dict): The data to include in the token payload.
+        expires_delta (timedelta | None): Optional expiration time.
+
+    Returns:
+        str: The generated JWT access token.
+    """
+    
+    to_encode = data.copy()
+    if expires_delta:
+        expire = datetime.utcnow() + expires_delta
+    else:
+        expire = datetime.utcnow() + timedelta(minutes=15)
+    to_encode.update({"exp": expire})
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM) # type: ignore
+    return encoded_jwt
+
+def decode_access_token(token: str) -> dict:
+    """
+    Decodes a JWT access token.
+
+    Args:
+        token (str): The JWT access token to decode.
+
+    Returns:
+        dict: The decoded token payload.
+    """
+    try:
+        decoded_jwt = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM]) # type: ignore
+        return decoded_jwt
+    except jwt.ExpiredSignatureError:
+        raise Exception("Token has expired")
+    except jwt.InvalidTokenError:
+        raise Exception("Invalid token")
+    
+

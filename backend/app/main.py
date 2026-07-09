@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.v1.health import router as health_router
 from app.core.exception import register_exception_handlers
-
+from app.api.v1.auth import router as auth_router
 
 app = FastAPI(
     title="Travel Optimizer API",
@@ -22,8 +22,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
 
 logging.basicConfig(level=logging.INFO)
 
@@ -54,4 +52,6 @@ async def log_requests(request, call_next):
 @app.get("/")
 def root():
     return {"message": "Welcome to the Travel Optimizer API!"}
+
+app.include_router(auth_router)
 
