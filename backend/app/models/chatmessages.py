@@ -1,12 +1,11 @@
 
 
-
 from sqlalchemy import DateTime, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from app.base import BaseModel
 
 
-class ChatMessages(BaseModel):
+class ChatMessage(BaseModel):
     __tablename__ = "chatmessages"
 
     message_id = Column(Integer, primary_key=True, index=True,  nullable=False)

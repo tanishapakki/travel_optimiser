@@ -12,7 +12,7 @@ class Feedback(BaseModel):
     feedback_id = Column(Integer, primary_key=True, index=True,  nullable=False)
     user_id = Column(Integer, ForeignKey("users.user_id"), nullable=False)
     trip_id = Column(Integer, ForeignKey("trips.trip_id"), nullable=False)
-    item_id = Column(Integer, ForeignKey("itineraryitems.item_id"), nullable=False)
+    item_id = Column(Integer, ForeignKey("itinerary_items.item_id"), nullable=False)
     rating = Column(Integer, nullable=False)
 
     user = relationship("User", back_populates="feedback")

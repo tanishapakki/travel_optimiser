@@ -19,8 +19,8 @@ class ItineraryDays(Base):
 
     trip = relationship("Trip", back_populates="itinerary_days")
 
-    itineraryitems = relationship(
+    itinerary_items = relationship(
         "ItineraryItem",
-        back_populates="itinerarydays",
+        back_populates="itinerary_day",
         cascade="all, delete-orphan"
     )

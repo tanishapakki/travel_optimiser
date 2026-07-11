@@ -5,4 +5,4 @@ from .itineraryitems import ItineraryItem
 from .budgetcategories import BudgetCategories
 from .preferences import Preference
 from .feedback import Feedback
-from .chatmessages import ChatMessages
+from .chatmessages import ChatMessage

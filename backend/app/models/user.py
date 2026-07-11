@@ -11,7 +11,7 @@ class User(BaseModel):
     user_id = Column(Integer, primary_key=True, index=True,  nullable=False)
     name = Column(String(100), unique=True, index=True, nullable=False)
     email = Column(String(255), unique=True, index=True, nullable=False)
-    password_hashed = Column(String(255), nullable=False)
+    password_hash = Column(String(255), nullable=False)
 
     trips = relationship("Trip", back_populates="user", cascade="all, delete-orphan")
 

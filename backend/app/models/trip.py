@@ -19,13 +19,13 @@ class Trip(BaseModel):
     user = relationship("User", back_populates="trips")
 
     itinerary_days = relationship(
-        "ItineraryDay",
+        "ItineraryDays",
         back_populates="trip",
         cascade="all, delete-orphan"
     )
 
-    budget_categories = relationship(
-        "BudgetCategory",
+    budgetcategories = relationship(
+        "BudgetCategories",
         back_populates="trip",
         cascade="all, delete-orphan"
     )
