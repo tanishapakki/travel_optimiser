@@ -1,7 +1,10 @@
 
 
+from ast import TypeVar
+import errno
+import json
 import logging
-from typing import Any
+from typing import Any, Type
 
 from certifi import contents
 from groq import APIConnectionError, APITimeoutError, Groq
@@ -9,6 +12,12 @@ from tenacity import before_sleep_log, retry, retry_if_exception_type, stop_afte
 
 
 from app.core.llmconfig import get_llm_settings
+from pydantic import BaseModel, ValidationError
+
+from app.core.exception import StructuredOutputError
+from app.utils.json_utils import strip_markdown_fences
+from backend.app.crud import user
+from backend.app.utils.prompt_loader import load_prompt
 
 
 logger = logging .getLogger(__name__)
@@ -16,6 +25,9 @@ logger = logging .getLogger(__name__)
 settings =get_llm_settings()
 
 client =Groq(api_key=settings.GROQ_API_KEY, timeout=settings.LLM_TIMEOUT_SECONDS, max_retries=0)
+
+
+T= TypeVar("T", bound=BaseModel)
 
 @retry(
     retry=retry_if_exception_type((APIConnectionError, APITimeoutError)),
@@ -26,6 +38,7 @@ client =Groq(api_key=settings.GROQ_API_KEY, timeout=settings.LLM_TIMEOUT_SECONDS
     before_sleep=before_sleep_log(logger, logging.WARNING),
     reraise=True,
 )
+
 
 def generate(messages:str | list[dict[str,Any]], 
              max_tokens:int = 1000, 
@@ -61,3 +74,37 @@ def generate(messages:str | list[dict[str,Any]],
         raise ValueError("LLM returned empty content")
     
     return content
+
+def generate_structured(prompt:str, schema: Type[T]) -> T:
+
+    planner_prompt =load_prompt("planner_v1.txt",user_prompt=prompt)
+
+    response =generate(planner_prompt)
+
+
+    
+    try:
+        return _parse_response(response, schema)
+    except(json.JSONDecodeError, ValidationError) as firsterror:
+        
+        repair_prompt =load_prompt("repair_v1.txt",user_prompt=prompt, invalid_response=response, error=str(firsterror))
+
+        repaired_prompt =generate(repair_prompt)
+
+
+        try:
+            return _parse_response(repaired_prompt,schema)
+        except(json.JSONDecodeError, ValidationError) as e:
+            raise StructuredOutputError(
+                f"Failed to generate structured output: {e}"
+            ) from e
+        
+
+
+def _parse_response(text:str, schema: Type[T],):
+    cleaned = strip_markdown_fences(text)
+    data = json.loads(cleaned)
+    return schema.model_validate(data)
+
+
+    

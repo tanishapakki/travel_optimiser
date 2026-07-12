@@ -19,3 +19,7 @@ def register_exception_handlers(app: FastAPI):
             status_code=500,
             content={"error": "Internal Server Error", "message": str(exc)},
         )
+
+class StructuredOutputError(Exception):
+    """Raised when LLM doesnt produce valid staructured output"""
+    pass
