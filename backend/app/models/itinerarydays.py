@@ -18,7 +18,7 @@ class ItineraryItem(BaseModel):
     source_agent: str | None = None
 
 
-class ItineraryDay(BaseModel):
+class ItineraryDays(BaseModel):
     day_id: int | None = None
     trip_id: int | None = None
 
@@ -32,6 +32,6 @@ class ItineraryDay(BaseModel):
 
 
 class Itinerary(BaseModel):
-    itinerary_days: list[ItineraryDay] = Field(
+    itinerary_days: list[ItineraryDays] = Field(
         default_factory=list
     )

@@ -1,13 +1,14 @@
 from typing import Any, TypedDict
 
 from app.schemas.itinerary import Itinerary
+from app.schemas.trip import TripInput
 
 
 class PlannerState(TypedDict, total=False):
-    trip_input: dict[str, Any]
+    trip_input: TripInput
 
-    draft_itinerary: Itinerary
-
+    itinerary: Itinerary
+    
     validation_errors: list[str]
 
     repair_attempts: int
