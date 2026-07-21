@@ -1,37 +1,53 @@
-from datetime import datetime
+from datetime import date
 
-from pydantic import BaseModel, Field
+from sqlalchemy import Column, Date, ForeignKey, Integer, Text, UniqueConstraint
+from sqlalchemy.orm import relationship
 
-
-class ItineraryItem(BaseModel):
-    item_id: int | None = None
-    day_id: int | None = None
-    category_id: int
-
-    item_type: str
-    title: str | None = None
-    location: str | None = None
-
-    start_time: datetime | None = None
-    end_time: datetime | None = None
-
-    source_agent: str | None = None
+from app.base import BaseModel
 
 
 class ItineraryDays(BaseModel):
-    day_id: int | None = None
-    trip_id: int | None = None
+    __tablename__ = "itinerary_days"
 
-    day_number: int
-    date: str
-    notes: str | None = None
-
-    itinerary_items: list[ItineraryItem] = Field(
-        default_factory=list
+    __table_args__ = (
+        UniqueConstraint("trip_id", "day_number", name="uq_trip_day"),
     )
 
+    day_id = Column(
+        Integer,
+        primary_key=True,
+        index=True,
+        nullable=False,
+    )
 
-class Itinerary(BaseModel):
-    itinerary_days: list[ItineraryDays] = Field(
-        default_factory=list
+    trip_id = Column(
+        Integer,
+        ForeignKey("trips.trip_id", ondelete="CASCADE"),
+        nullable=False,
+    )
+
+    day_number = Column(
+        Integer,
+        nullable=False,
+    )
+
+    date = Column(
+        Date,
+        nullable=False,
+    )
+
+    notes = Column(
+        Text,
+        nullable=True,
+    )
+
+    trip = relationship(
+        "Trip",
+        back_populates="itinerary_days",
+    )
+
+    itinerary_items = relationship(
+        "ItineraryItem",
+        back_populates="itinerary_day",
+        cascade="all, delete-orphan",
     )
