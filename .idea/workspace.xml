@@ -5,25 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ef1b28b-56fa-4e9b-b4d5-bf8329037673" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/layout/Footer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/layout/Layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/layout/Navbar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/api/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/api/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/client.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/authStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/authStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/types/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/types/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/utils/storage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/storage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.node.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.node.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/schemas/trip.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/schemas/trip.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/mapcn-marker-popup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/mapcn-marker-popup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Home.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +84,9 @@
       <workItem from="1784574522789" duration="3097000" />
       <workItem from="1784614717859" duration="5417000" />
       <workItem from="1784627736797" duration="8225000" />
+      <workItem from="1784641959792" duration="1935000" />
+      <workItem from="1784647028666" duration="2118000" />
+      <workItem from="1784704011134" duration="17000" />
     </task>
     <servers />
   </component>

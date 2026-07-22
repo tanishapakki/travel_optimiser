@@ -1,7 +1,7 @@
 
 from sqlalchemy import Column, DateTime, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-from app.core.db import Base
+from app.database import Base
 
 
 class ItineraryItem(Base):

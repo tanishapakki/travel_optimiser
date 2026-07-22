@@ -3,10 +3,10 @@ from datetime import date
 from sqlalchemy import Column, Date, ForeignKey, Integer, Text, UniqueConstraint
 from sqlalchemy.orm import relationship
 
-from app.base import BaseModel
+from app.database import Base
 
 
-class ItineraryDays(BaseModel):
+class ItineraryDays(Base):
     __tablename__ = "itinerary_days"
 
     __table_args__ = (

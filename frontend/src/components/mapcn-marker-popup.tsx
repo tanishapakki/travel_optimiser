@@ -24,8 +24,8 @@ function cn(...inputs: Array<string | false | null | undefined>) {
 }
 
 const defaultStyles = {
-  dark: "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
-  light: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
+  dark: "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
+  light: "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
 };
 
 type Theme = "light" | "dark";

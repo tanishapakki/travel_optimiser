@@ -6,42 +6,133 @@ import {Map, MapMarker, MarkerContent, MarkerLabel, MarkerPopup} from "../compon
 const places = [
     {
         id: 1,
-        name: "The Metropolitan Museum of Art",
-        label: "Museum",
-        category: "Museum",
-        rating: 4.8,
-        reviews: 12453,
-        reviewLabel: "12,453",
-        hours: "10:00 AM - 5:00 PM",
-        image: "https://images.unsplash.com/photo-1575223970966-76ae61ee7838?w=300&h=200&fit=crop",
-        lng: -73.9632,
-        lat: 40.7794,
+        name: "New York",
+        label: "USA",
+        category: "North America",
+        rating: 4.9,
+        reviewLabel: "Global City",
+        hours: "24/7",
+        image:
+            "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?w=300&h=200&fit=crop",
+        lng: -74.006,
+        lat: 40.7128,
     },
     {
         id: 2,
-        name: "Brooklyn Bridge",
-        label: "Landmark",
-        category: "Landmark",
+        name: "London",
+        label: "UK",
+        category: "Europe",
         rating: 4.9,
-        reviews: 8234,
-        reviewLabel: "8,234",
-        hours: "Open 24 hours",
-        image: "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?w=300&h=200&fit=crop",
-        lng: -73.9969,
-        lat: 40.7061,
+        reviewLabel: "Global City",
+        hours: "24/7",
+        image:
+            "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=300&h=200&fit=crop",
+        lng: -0.1278,
+        lat: 51.5074,
     },
     {
         id: 3,
-        name: "Grand Central Terminal",
-        label: "Transit",
-        category: "Transit",
+        name: "Paris",
+        label: "France",
+        category: "Europe",
+        rating: 4.8,
+        reviewLabel: "Global City",
+        hours: "24/7",
+        image:
+            "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=300&h=200&fit=crop",
+        lng: 2.3522,
+        lat: 48.8566,
+    },
+    {
+        id: 4,
+        name: "Tokyo",
+        label: "Japan",
+        category: "Asia",
+        rating: 4.9,
+        reviewLabel: "Global City",
+        hours: "24/7",
+        image:
+            "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=300&h=200&fit=crop",
+        lng: 139.6917,
+        lat: 35.6895,
+    },
+    {
+        id: 5,
+        name: "Singapore",
+        label: "Singapore",
+        category: "Asia",
+        rating: 4.8,
+        reviewLabel: "Global City",
+        hours: "24/7",
+        image:
+            "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=300&h=200&fit=crop",
+        lng: 103.8198,
+        lat: 1.3521,
+    },
+    {
+        id: 6,
+        name: "Dubai",
+        label: "UAE",
+        category: "Middle East",
+        rating: 4.8,
+        reviewLabel: "Global City",
+        hours: "24/7",
+        image:
+            "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=300&h=200&fit=crop",
+        lng: 55.2708,
+        lat: 25.2048,
+    },
+    {
+        id: 7,
+        name: "Mumbai",
+        label: "India",
+        category: "Asia",
         rating: 4.7,
-        reviews: 5621,
-        reviewLabel: "5,621",
-        hours: "5:15 AM - 2:00 AM",
-        image: "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=300&h=200&fit=crop",
-        lng: -73.9772,
-        lat: 40.7527,
+        reviewLabel: "Global City",
+        hours: "24/7",
+        image:
+            "https://images.unsplash.com/photo-1595658658481-d53d3f999875?w=300&h=200&fit=crop",
+        lng: 72.8777,
+        lat: 19.076,
+    },
+    {
+        id: 8,
+        name: "Sydney",
+        label: "Australia",
+        category: "Oceania",
+        rating: 4.8,
+        reviewLabel: "Global City",
+        hours: "24/7",
+        image:
+            "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=300&h=200&fit=crop",
+        lng: 151.2093,
+        lat: -33.8688,
+    },
+    {
+        id: 9,
+        name: "São Paulo",
+        label: "Brazil",
+        category: "South America",
+        rating: 4.7,
+        reviewLabel: "Global City",
+        hours: "24/7",
+        image:
+            "https://images.unsplash.com/photo-1543059080-f9b1272213d5?w=300&h=200&fit=crop",
+        lng: -46.6333,
+        lat: -23.5505,
+    },
+    {
+        id: 10,
+        name: "Cape Town",
+        label: "South Africa",
+        category: "Africa",
+        rating: 4.8,
+        reviewLabel: "Global City",
+        hours: "24/7",
+        image:
+            "https://images.unsplash.com/photo-1576485375217-d6a95e34d043?w=300&h=200&fit=crop",
+        lng: 18.4241,
+        lat: -33.9249,
     },
 ];
 
@@ -49,7 +140,8 @@ export default function MarkerPopupDemo() {
     return (
         <div className="flex min-h-screen w-full items-center justify-center overflow-hidden bg-background p-8">
             <div className="h-[500px] w-full max-w-4xl overflow-hidden rounded-lg border bg-background shadow-sm">
-                <Map center={[-73.98, 40.74]} zoom={11}>
+                <Map center={[0, 20]}
+                     zoom={1.8}>
                     {places.map((place) => (
                         <MapMarker key={place.id} longitude={place.lng} latitude={place.lat}>
                             <MarkerContent>

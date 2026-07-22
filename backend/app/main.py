@@ -6,6 +6,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.v1.health import router as health_router
 from app.core.exception import register_exception_handlers
 from app.api.v1.auth import router as auth_router
+from app.api.v1 import trip
+
+
+from app.models import Trip, ItineraryDays
+
+print(Trip)
+print(ItineraryDays)
 
 app = FastAPI(
     title="Travel Optimizer API",
@@ -55,3 +62,4 @@ def root():
 
 app.include_router(auth_router)
 
+app.include_router(trip.router)

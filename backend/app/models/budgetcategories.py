@@ -2,7 +2,7 @@
 
 from sqlalchemy import Column, ForeignKey, Integer, Numeric, String
 from sqlalchemy.orm import relationship
-from app.core.db import Base
+from app.database import Base
 
 
 class BudgetCategories(Base):
